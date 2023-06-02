@@ -1,18 +1,35 @@
 /**
- * WHAT IS THIS FILE?
- *
- * Globally applied styles. No matter which components are in the page or matching route,
- * the styles in here will be applied to the Document, without any sort of CSS scoping.
- *
+ * Tailwind CSS imports
+ * View the full documentation at https://tailwindcss.com
  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  h1 {
+    @apply text-4xl
+  }
 
-/**
- * WHAT IS THIS FILE?
- *
- * Globally applied styles. No matter which components are in the page or matching route,
- * the styles in here will be applied to the Document, without any sort of CSS scoping.
- *
- */
+  h2 {
+    @apply text-3xl
+  }
+
+  h3 {
+    @apply text-2xl
+  }
+
+  hr {
+    @apply my-2
+  }
+
+  pre {
+    @apply bg-black w-full px-2 py-3 rounded-xl my-4;
+    direction: ltr;
+  }
+  ::selection {
+    @apply bg-primary
+  }
+}
 html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
@@ -22,8 +39,9 @@ html {
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
 }
-
 body {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  /* font-family: 'Noto Sans Arabic', sans-serif; */
   padding: 0;
   line-height: inherit;
 }
