@@ -6,20 +6,24 @@ import {
     useResource$,
     Resource,
 } from "@builder.io/qwik";
-import { Form, Link } from "@builder.io/qwik-city";
+import { Form, Link, server$ } from "@builder.io/qwik-city";
 import prisma from "~/lib/prisma";
 import { useAuthSession, useAuthSignout } from "~/routes/plugin@auth";
+
+export const getUserByEmail = server$(async (email: string) => {
+    return await prisma.user.findUnique({
+        where: {
+            email: session.value.user.email,
+        },
+    });
+});
 
 export const Navbar = component$(() => {
     const session = useAuthSession();
     const signout = useAuthSignout();
     const currentUser = useResource$(async () => {
         if (session.value?.user?.email) {
-            return await prisma.user.findUnique({
-                where: {
-                    email: session.value.user.email,
-                },
-            });
+            return await getUserByEmail(session.value.user.email);
         }
         return null;
     });
