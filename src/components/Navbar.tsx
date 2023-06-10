@@ -13,7 +13,7 @@ import { useAuthSession, useAuthSignout } from "~/routes/plugin@auth";
 export const getUserByEmail = server$(async (email: string) => {
     return await prisma.user.findUnique({
         where: {
-            email: session.value.user.email,
+            email
         },
     });
 });
