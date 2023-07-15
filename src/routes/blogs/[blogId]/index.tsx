@@ -22,7 +22,7 @@ export default component$(() => {
     const post = posts.value.find((post) => post.id === params.blogId);
     return post ? (
         <div class="w-3/5 mx-auto">
-            <h1 class="text-5xl text-center">{post.title}</h1>
+            <h1 class="text-5xl text-center py-5">{post.title}</h1>
             {getUserById(post.userId).then(
                 (user) => user && <span>الكاتب: {user.name}</span>
             )}
